@@ -69,6 +69,7 @@ public class StreamsDemo {
         //GroupBy
         Map<Integer, List<Person>> groupByMap = people.stream().collect(Collectors.groupingBy(Person::getAge));
         System.out.println(groupByMap);
+        System.out.println(people.stream().collect(Collectors.groupingBy(Person::getName,Collectors.mapping(Person::getAge,Collectors.toList()))));
     }
 
 }
