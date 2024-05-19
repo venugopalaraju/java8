@@ -1,5 +1,7 @@
 package com.java8.functionalInterface;
 
+import java.util.Objects;
+
 public class Product {
     private String name;
     private double price;
@@ -53,5 +55,17 @@ public class Product {
                 ", category='" + category + '\'' +
                 ", grade='" + grade + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        //if (this == o) return true;
+        if (!(o instanceof Product product)) return false;
+        return Double.compare(product.getPrice(), getPrice()) == 0 && Objects.equals(getName(), product.getName()) && Objects.equals(getCategory(), product.getCategory()) && Objects.equals(getGrade(), product.getGrade());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getPrice(), getCategory(), getGrade());
     }
 }

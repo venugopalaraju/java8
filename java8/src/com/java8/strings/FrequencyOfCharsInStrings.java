@@ -17,6 +17,7 @@ public class FrequencyOfCharsInStrings {
         Function<String,Map<String,Integer>> charMapByFrequency = string -> Stream.of(string.split("")).collect(groupingBy(e->e,collectingAndThen(counting(), Long::intValue)));
         Map<String,Integer> string1 = charMapByFrequency.apply(s);
         Map<String,Integer> string2 = charMapByFrequency.apply(s1);
+        System.out.println(string2);
         return string1.entrySet().stream().allMatch(e-> (null==string2.get(e.getKey())) || (string2.get(e.getKey())%(e.getValue())==0 || e.getValue()%string2.get(e.getKey())==0)) ? "YES" : "NO";
     }
 }

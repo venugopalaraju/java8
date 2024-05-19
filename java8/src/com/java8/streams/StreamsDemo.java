@@ -1,6 +1,7 @@
 package com.java8.streams;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -68,8 +69,10 @@ public class StreamsDemo {
         System.out.println(partitionMap);
         //GroupBy
         Map<Integer, List<Person>> groupByMap = people.stream().collect(Collectors.groupingBy(Person::getAge));
-        System.out.println(groupByMap);
+        //System.out.println(groupByMap);
+        System.out.println("=================`");
         System.out.println(people.stream().collect(Collectors.groupingBy(Person::getName,Collectors.mapping(Person::getAge,Collectors.toList()))));
+        //people.stream().sorted(Comparator.comparing(Person::getName)).forEach(System.out::println);
     }
 
 }
